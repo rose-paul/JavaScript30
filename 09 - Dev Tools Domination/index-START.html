@@ -40,10 +40,22 @@
     console.assert(1 === 1, "That is wrong!") // only fires if wrong
 
     // clearing
+    console.clear();
 
     // Viewing DOM Elements
+    const p = document.querySelector('p')
+    console.log(p)
+    console.dir(p) // see properties and methods on element
+    console.clear();
 
     // Grouping together
+    dogs.forEach( dog => {
+      console.group(`${dog.name}`)
+      console.log(`this is ${dog.name}`)
+      console.log(`${dog.name} is ${dog.age} years old`)
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`)
+      console.groupEnd(`${dog.name}`)
+    })
 
     // counting
 
