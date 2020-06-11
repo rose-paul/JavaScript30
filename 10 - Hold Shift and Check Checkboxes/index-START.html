@@ -96,8 +96,24 @@
   </div>
 
 <script>
-  const items = document.querySelectorAll('.item');
-  console.log(items);
+  let last = false;
+function handleClick(e) {
+  // shift key and checking?
+  if (e.shiftKey && this.checked) {
+    
+  }
+  
+  last = this;
+}
+
+  const items = document.querySelectorAll('.inbox input[type="checkbox"]');
+  items.forEach( item => {
+    item.addEventListener('click', handleClick)
+  })
+
+  function selectItems(e) {
+    console.log(e.shiftKey)
+  }
 </script>
 </body>
 </html>
