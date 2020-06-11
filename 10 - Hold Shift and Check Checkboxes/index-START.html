@@ -96,11 +96,20 @@
   </div>
 
 <script>
-  let last = false;
+  let last;
 function handleClick(e) {
   // shift key and checking?
+  let btwn = false;
   if (e.shiftKey && this.checked) {
-    
+    items.forEach( item => {
+      if (item === this || item === last) {
+        btwn = !btwn;
+      }
+      console.log(`${item}: ${btwn}`)
+      if (btwn) {
+        item.checked = true;
+      }
+    })
   }
   
   last = this;
