@@ -58,7 +58,7 @@
   <audio data-key="76" src="sounds/tink.wav"></audio>
 
 <script>
-    window.addEventListener('keydown', e => {
+    function playSound(e) {
       const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`)
       const key = document.querySelector(`.key[data-key="${e.keyCode}"]`)
       if (!audio) return;
@@ -68,7 +68,7 @@
       // don't want time out to remove it, because if designer comes in
       // and changes CSS, need to sync JS too
       // BETTER: transition end event
-    })
+    }
 
     function removeTransition(e) {
       if (e.propertyName !== 'transform') return; // skip if not transform
@@ -81,6 +81,7 @@
       key.addEventListener('transitionend', removeTransition)
     }
 
+    window.addEventListener('keydown', playSound)
 </script>
 
 
