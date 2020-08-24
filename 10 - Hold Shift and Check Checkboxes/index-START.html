@@ -96,32 +96,27 @@
   </div>
 
 <script>
-  let last;
-function handleClick(e) {
-  // shift key and checking?
-  let btwn = false;
-  if (e.shiftKey && this.checked) {
-    items.forEach( item => {
-      if (item === this || item === last) {
-        btwn = !btwn;
-      }
-      console.log(`${item}: ${btwn}`)
-      if (btwn) {
-        item.checked = true;
-      }
-    })
-  }
-  
-  last = this;
-}
-
-  const items = document.querySelectorAll('.inbox input[type="checkbox"]');
+  const items = document.querySelectorAll('.inbox input[type="checkbox"]')
   items.forEach( item => {
-    item.addEventListener('click', handleClick)
+    item.addEventListener('click', handleCheck)
   })
 
-  function selectItems(e) {
-    console.log(e.shiftKey)
+  let last;
+
+  function handleCheck(e) {
+    // if shift key down and not checking
+    let insideChecks = false;
+    if (e.shiftKey && this.checked) {
+      items.forEach( item => {
+        if (item === this || item === last) {
+          insideChecks = !insideChecks;
+        }
+        if (insideChecks) {
+          item.checked = true;
+        }
+      })
+    }
+    last = this;
   }
 </script>
 </body>
